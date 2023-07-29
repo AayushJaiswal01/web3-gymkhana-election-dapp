@@ -10,10 +10,8 @@ contract Voting {
     Candidate[] public candidates;
     address owner;
     mapping(address => bool) public voters;
-
     uint256 public votingStart;
     uint256 public votingEnd;
-
 constructor(string[] memory _candidateNames, uint256 _durationInMinutes) {
     for (uint256 i = 0; i < _candidateNames.length; i++) {
         candidates.push(Candidate({
@@ -49,17 +47,16 @@ constructor(string[] memory _candidateNames, uint256 _durationInMinutes) {
         require(!voters[msg.sender], "You have already voted.");
         require(_candidateIndex < candidates.length, "Invalid candidate index.");
 
-        candidates[_candidateIndex].voteCount++;
-         candidates[_candidateIndex].voteCount++;
+        candidates[_candidateIndex].voteCount+=3;
+         
         voters[msg.sender] = true;
     }
      function vote2(uint256 _candidateIndex) public {
         require(!voters[msg.sender], "You have already voted.");
         require(_candidateIndex < candidates.length, "Invalid candidate index.");
 
-        candidates[_candidateIndex].voteCount++;
-          candidates[_candidateIndex].voteCount++;
-            candidates[_candidateIndex].voteCount++;
+        candidates[_candidateIndex].voteCount+=5;
+         
         voters[msg.sender] = true;
     }
 
